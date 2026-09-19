@@ -34,10 +34,10 @@ x4 = np.cos(2 * np.pi * 5 * t + np.pi / 2)
 
 # Lista de pares (señal, título en formato LaTeX, nombre imagen generada)
 senales = [
-    (x1, "$x_1(t) = \\cos(2\\pi \\cdot 5t)$", "1_x1"),
-    (x2, "$x_2(t) = 2 \\cos(2\\pi \\cdot 5t)$", "1_x2"),
-    (x3, "$x_3(t) = \\cos(2\\pi \\cdot 10t)$", "1_x3"),
-    (x4, "$x_4(t) = \\cos(2\\pi \\cdot 5t + \\pi/2)$", "1_x3")
+    (x1, "$x_1(t) = \\cos(2 \\pi 5 \\cdot t)$", "1_x1"),
+    (x2, "$x_2(t) = 2 \\cos(2 \\pi 5 \\cdot t)$", "1_x2"),
+    (x3, "$x_3(t) = \\cos(2 \\pi 10 \\cdot t)$", "1_x3"),
+    (x4, "$x_4(t) = \\cos(2 \\pi 5 \\cdot t + \\pi/2)$", "1_x3")
 ]
 
 # -------------------------------------------------------------
