@@ -27,13 +27,17 @@ t = np.arange(0, duracion, 1 / fs)
 # -------------------------------------------------------------
 # Definición de señales 
 # -------------------------------------------------------------
-x = (1 + np.cos(2 * np.pi * t) / 2) * np.cos(2 * np.pi * 20 * t)
-y = np.cos(2 * np.pi * 20 * t)
+x1 = np.cos(2 * np.pi * 5 * t)
+x2 = 2 * np.cos(2 * np.pi * 5 * t)
+x3 = np.cos(2 * np.pi * 10 * t)
+x4 = np.cos(2 * np.pi * 5 * t + np.pi / 2)
 
 # Lista de pares (señal, título en formato LaTeX, nombre imagen generada)
 senales = [
-    (x, "$x(t) = (1 + ~ \\frac{1}{2} ~ \\cos(2 \\pi \\cdot t)) ~ \\cos(2 \\pi 20 \\cdot t)$", "5_x"),
-    (y, "$y(t) = \\cos(2 \\pi 20 \\cdot t)$", "5_cos20hz"),
+    (x1, "$x_1(t) = \\cos(2 \\pi 5 \\cdot t)$", "1_x1"),
+    # (x2, "$x_2(t) = 2 \\cos(2 \\pi 5 \\cdot t)$", "1_x2"),
+    # (x3, "$x_3(t) = \\cos(2 \\pi 10 \\cdot t)$", "1_x3"),
+    # (x4, "$x_4(t) = \\cos(2 \\pi 5 \\cdot t + \\pi/2)$", "1_x4")
 ]
 
 # -------------------------------------------------------------
