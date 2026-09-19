@@ -18,21 +18,21 @@ def graficar_senal(t, x, titulo, nombre_archivo, ylabel="Amplitud"):
 # -------------------------------------------------------------
 # Configuración de parámetros
 # -------------------------------------------------------------
-fs = 1000        # Frecuencia de muestreo en Hz (modificar aquí si es necesario)
+fs = 1000        # Frecuencia de muestreo en Hz 
 duracion = 1.0   # Duración de la señal en segundos
 
 # Vector de tiempo
 t = np.arange(0, duracion, 1 / fs)
 
 # -------------------------------------------------------------
-# Definición de señales (Ejercicio 1)
+# Definición de señales 
 # -------------------------------------------------------------
 x1 = np.cos(2 * np.pi * 5 * t)
 x2 = 2 * np.cos(2 * np.pi * 5 * t)
 x3 = np.cos(2 * np.pi * 10 * t)
 x4 = np.cos(2 * np.pi * 5 * t + np.pi / 2)
 
-# Lista de pares (señal, título en formato LaTeX)
+# Lista de pares (señal, título en formato LaTeX, nombre imagen generada)
 senales = [
     (x1, "$x_1(t) = \\cos(2\\pi \\cdot 5t)$", "1_x1"),
     (x2, "$x_2(t) = 2 \\cos(2\\pi \\cdot 5t)$", "1_x2"),
