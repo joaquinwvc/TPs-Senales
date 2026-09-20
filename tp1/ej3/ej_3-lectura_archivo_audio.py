@@ -87,7 +87,7 @@ def analizar_y_graficar_audio(ruta_archivo):
     plt.show()
 
 if __name__ == "__main__":
-    # ¡CAMBIA ESTE NOMBRE POR EL DE TU ARCHIVO DESCARGADO!
+    # Nombre del archivo wav
     nombre_archivo = "Windows_XP_Startup.wav" 
     
     try:
