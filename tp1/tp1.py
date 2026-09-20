@@ -105,6 +105,22 @@ def ejc2():
     graficar_senal(t, x, titulo, "2_suma_cosenos.png",
                    decorar=lambda: resaltar_periodicidad(T, duracion))
 
+def ejc4():
+    fs = 40000
+    duracion_x1 = 0.006
+    duracion_x2 = 0.006
+
+    t_x1 = np.arange(0, duracion_x1, 1 / fs)
+    t_x2 = np.arange(0, duracion_x2, 1 / fs)
+
+    x1 = np.cos(2 * np.pi * 440 * t_x1)
+    x2 = np.cos(2 * np.pi * 880 * t_x2)
+
+    graficar_senal(t_x1, x1, "$\\cos(2 \\pi 440 \\cdot t)$", "4_x1_440hz.png", decorar=lambda:resaltar_periodicidad(0.0023, duracion_x1, y_flecha = 1.1), carpeta = "ej4")
+    graficar_senal(t_x2, x2, "$cos(2 \\pi 880 \\cdot t)$", "4_x1_880hz.png", decorar=lambda:resaltar_periodicidad(0.0011, duracion_x1, y_flecha = 1.1), carpeta = "ej4")
+
+
+
 def ejc5():
     duracion_x = 5   # Duración de la señal en segundos
 
@@ -147,7 +163,8 @@ def ejc5():
 def main():
     # ejc2()
     # ejc1()
-    ejc5()
+    ejc4()
+    # ejc5()
 
 if __name__ == "__main__":
     main()
