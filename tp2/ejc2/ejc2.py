@@ -197,7 +197,7 @@ def ejc2_4(mod_fft):
         graficar_espectrograma(f, t, S,
                                        f"Espectrograma de s(t) - ventana de {v} ms",
                                        f"img/4/espectrograma_s_{v}ms.png",
-                                       fmax=8500, fmin=7500)
+                                       fmax=6500, fmin=9500, t_min=4.3, t_max=4.4)
     return s 
 
 def ejc2_5(s):
@@ -241,7 +241,6 @@ def main():
     #ejercicio 4: Generar la señal modulada s(t) con fc = 8 kHz y µ = 0,8. Graficar su espectrograma con las dos ventanas anteriores
     s = ejc2_4(modulo_normalizado_fft) 
 
-    ejc2_5(s)
-
+    #ejc2_5(s)
 if __name__ == "__main__":
     main()
