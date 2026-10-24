@@ -162,9 +162,9 @@ def graficar_espectrograma(f, t, S, titulo, ruta, fmin=0, fmax=8000, t_min=None,
     plt.savefig(ruta, dpi=150)
     plt.show()
 
-def modular_am(mod_fft, fc, mu):
-    t = np.arange(len(mod_fft)) / fs
-    return (1 + mu * mod_fft) * np.cos(2 * np.pi * fc * t)
+def modular_am(m, fc, mu):
+    t = np.arange(len(m)) / fs
+    return (1 + mu * m) * np.cos(2 * np.pi * fc * t)
 
 #@param data: señal de audio
 #@param n: cantidad de muestras de la señal
