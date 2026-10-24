@@ -48,6 +48,9 @@ def separar_canales(data):
 
 # Auxiliar: grafica un tramo de la señal, una figura con un subplot por canal
 
+def normalizar(data):
+    m = data.astype(np.float64)
+    return m / np.max(np.abs(m))
 
 def _graficar_tramo(data, fs, titulo, archivo_salida, duracion_max=None):
     NOMBRES_CANALES = ["Canal izquierdo", "Canal derecho"]
@@ -174,31 +177,29 @@ def ejc2_1(data, n):
 
     return modulo_normalizado_fft, x_fft, x_fft_frec
 
-def ejc2_2(mod_fft):
+
+def ejc2_2(m):
     for v in (40, 5):
-        f, t, s = espectrograma(mod_fft, fs, v)
-        graficar_espectrograma(f, t, s, f"Espectrograma de m(t) - ventana de {v} ms",
-                            f"img/2/espectrograma_{v}ms.png", fmax=2000, t_min=3.5, t_max=5.5)
-def ejc2_3(mod_fft):
-    nperseg = int(round(5e-3 * fs))          # 480 muestras
-    for nfft in (nperseg, 4096):         #Se relizan 2 espectrogramas: sin padding, con padding
-        f, t, S = espectrograma(mod_fft, fs, 5, nfft=nfft)
+        f, t, S = espectrograma(m, fs, v)
+        graficar_espectrograma(f, t, S, f"Espectrograma de m(t) - ventana de {v} ms",
+                               f"img/2/espectrograma_{v}ms.png")
+
+def ejc2_3(m):
+    nperseg = int(round(5e-3 * fs))
+    for nfft in (nperseg, 4096):
+        f, t, S = espectrograma(m, fs, 5, nfft=nfft)
         graficar_espectrograma(f, t, S,
                                f"Espectrograma de m(t) - ventana de 5 ms, nfft = {nfft}",
-                               f"img/3/espectrograma_5ms_nfft{nfft}.png", fmax=500, t_min=3.5, t_max=5.5)
-        
-def ejc2_4(mod_fft):
-    fc, mu = 8000, 0.8
-    s = modular_am(mod_fft, fc, mu) #modulada
+                               f"img/3/espectrograma_5ms_nfft{nfft}.png")
 
-    # Punto 4: espectrograma con las dos ventanas de la modulada
+def ejc2_4(m):
+    fc, mu = 8000, 0.8
+    s = modular_am(m, fc, mu)
     for v in (40, 5):
         f, t, S = espectrograma(s, fs, v)
-        graficar_espectrograma(f, t, S,
-                                       f"Espectrograma de s(t) - ventana de {v} ms",
-                                       f"img/4/espectrograma_s_{v}ms.png",
-                                       fmax=6500, fmin=9500, t_min=4.3, t_max=4.4)
-    return s 
+        graficar_espectrograma(f, t, S, f"Espectrograma de s(t) - ventana de {v} ms",
+                               f"img/4/espectrograma_s_{v}ms.png", fmax= 16000)
+    return s
 
 def ejc2_5(s):
     # Punto 5: guardar 0.5 s(t) como WAV
@@ -229,18 +230,22 @@ def main():
     duracion = calcular_duracion(n, fs)
     print(f"Duración del audio: {duracion:.3f} s")
 
+    m = normalizar(data)
+
     #ejercicio 1: Graficar la fft    
-    modulo_normalizado_fft, x_fft, x_fft_frec = ejc2_1(data, n)
+    ejc2_1(data, n)
 
     #ejercicio 2: graficar el espectrograma de ventana 40 ms y 5
-    #ejc2_2(modulo_normalizado_fft)
+    #ejc2_2(m)
 
     #ejercicio 3: graficar el espectrograma con zero padding
-    #ejc2_3(modulo_normalizado_fft) #Comentar cuando no se quiera obtener con padding (4096 es bastante pero se nota más :))
+    #ejc2_3(m) #Comentar cuando no se quiera obtener con padding (4096 es bastante pero se nota más :))
 
     #ejercicio 4: Generar la señal modulada s(t) con fc = 8 kHz y µ = 0,8. Graficar su espectrograma con las dos ventanas anteriores
-    s = ejc2_4(modulo_normalizado_fft) 
+    s = ejc2_4(m)
 
+    #ejercicio 5: 
     #ejc2_5(s)
+
 if __name__ == "__main__":
     main()
