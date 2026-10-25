@@ -83,7 +83,7 @@ def ej5_1_espectrograma(w, fs):
 
     ventana = 10
     nfft= 2048
-    f, t, S = espectrograma(w, fs, ventana, nfft=nfft, overlap = 0.9)
+    f, t, S = espectrograma(w, fs, ventana, nfft=nfft, overlap = 0.5)
     graficar_espectrograma(f, t, S,
                            f"Espectrograma de emisoras.wav (alta resolucion temporal) - ventana de {ventana} ms",
                            "1/espectrograma_emisoras_hrt.png", fmax=47000, t_min=0, t_max=len(w)/fs)
