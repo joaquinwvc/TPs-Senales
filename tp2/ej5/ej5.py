@@ -77,16 +77,16 @@ def ej5_1_espectrograma(w, fs):
     ventana = 100
     nfft = 16384
     f, t, S = espectrograma(w, fs, ventana, nfft=nfft)
-    graficar_espectrograma(f, t, S,
-                           f"Espectrograma de emisoras.wav (alta resolucion frecuencial) - ventana de {ventana} ms",
-                           "1/espectrograma_emisoras_hrf.png", fmax=47000, t_min=0, t_max=len(w)/fs)
+    # graficar_espectrograma(f, t, S,
+    #                        f"Espectrograma de emisoras.wav (alta resolucion frecuencial) - ventana de {ventana} ms",
+    #                        "1/espectrograma_emisoras_hrf.png", fmax=47000, t_min=0, t_max=len(w)/fs)
 
     ventana = 10
     nfft= 2048
     f, t, S = espectrograma(w, fs, ventana, nfft=nfft, overlap = 0.9)
-    # graficar_espectrograma(f, t, S,
-    #                        f"Espectrograma de emisoras.wav (alta resolucion temporal) - ventana de {ventana} ms",
-    #                        "1/espectrograma_emisoras_hrt.png", fmax=47000, t_min=0, t_max=len(w)/fs)
+    graficar_espectrograma(f, t, S,
+                           f"Espectrograma de emisoras.wav (alta resolucion temporal) - ventana de {ventana} ms",
+                           "1/espectrograma_emisoras_hrt.png", fmax=47000, t_min=0, t_max=len(w)/fs)
 
 
 def ej5_2_3_demodular_todas(w, fs, emisoras_info):
@@ -170,7 +170,7 @@ def main():
     ]
     
     # 3. Extraer fase, demodular y guardar cada señal
-    ej5_2_3_demodular_todas(w, fs, emisoras_info)
+    # ej5_2_3_demodular_todas(w, fs, emisoras_info)
 
 if __name__ == "__main__":
     main()
